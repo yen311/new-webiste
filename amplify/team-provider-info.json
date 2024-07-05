@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-yenwebsite-dev-83ca8-authRole",
+      "UnauthRoleArn": "arn:aws:iam::747669970347:role/amplify-yenwebsite-dev-83ca8-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::747669970347:role/amplify-yenwebsite-dev-83ca8-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-yenwebsite-dev-83ca8-deployment",
+      "UnauthRoleName": "amplify-yenwebsite-dev-83ca8-unauthRole",
+      "StackName": "amplify-yenwebsite-dev-83ca8",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:747669970347:stack/amplify-yenwebsite-dev-83ca8/fdd7f290-3a99-11ef-9742-0aeee7409ced",
+      "AmplifyAppId": "d1frmzet500jiv"
+    },
+    "categories": {
+      "api": {
+        "yenwebsite": {}
+      }
+    }
+  }
+}

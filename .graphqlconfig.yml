@@ -1,0 +1,12 @@
+projects:
+  yenwebsite:
+    schemaPath: Users/kuoyen/Desktop/New Personal Website/yen-website/graphql/schema.json
+    includes:
+      - graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: graphql
