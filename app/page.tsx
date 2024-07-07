@@ -7,7 +7,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center justify-between p-24 xs:p-0">
       <div className="w-full p-6 bg-white/30 rounded-lg text-white space-y-4 > *">
         <h2 className="text-2xl font-bold">Welcome 歡迎</h2>
         <div className=" font-semibold border-b border-gray-300 border-dotted w-1/2 pb-12">

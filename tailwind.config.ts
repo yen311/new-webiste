@@ -1,6 +1,4 @@
-import { text } from "stream/consumers";
 import type { Config } from "tailwindcss";
-const colors = require('tailwindcss/colors')
 
 const config: Config = {
   content: [
