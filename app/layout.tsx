@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <ClientApplication>
-          <div className="bg-radial-from-center">
+          <div className="bg-radial-from-center min-h-screen">
             <NavBar />
             {children}
             <Footer />

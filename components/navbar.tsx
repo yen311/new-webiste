@@ -44,7 +44,7 @@ export default function Navbar() {
         <header className="bg-white bg-opacity-30 backdrop-blur-md">
             <nav className="mx-auto flex items-center justify-between p-6 lg:px-16" aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5">
+                    <a href="/" className="-m-1.5">
                         <span className="sr-only">Your Company</span>
                         <img className="h-14 w-auto" src={logo.src} alt="" />
                     </a>
@@ -60,10 +60,10 @@ export default function Navbar() {
                     </button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                    <a href="#" className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary">
+                    <a href="/resume" className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary">
                         Resume
                     </a>
-                    <a href="#" className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary">
+                    <a href="/about" className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary">
                         About Me
                     </a>
                     <Popover className="relative group">
@@ -71,10 +71,9 @@ export default function Navbar() {
                             Blogs
                             <ChevronDownIcon className="h-5 w-5 flex-none text-main group-hover:text-primary" aria-hidden="true" />
                         </PopoverButton>
-
                         <PopoverPanel
                             transition
-                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                            className="z-50 absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                         >
                             <div className="p-4">
                                 {blogs.map((item) => (
@@ -97,7 +96,7 @@ export default function Navbar() {
                             </div>
                             <div className="grid bg-gray-50">
                                 <a
-                                    href="#"
+                                    href="/blogs"
                                     className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                                 >
                                     <PlayCircleIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
@@ -108,7 +107,7 @@ export default function Navbar() {
                     </Popover>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm font-semibold leading-6 text-main hover:text-primary">
+                    <a href="/login" className="text-sm font-semibold leading-6 text-main hover:text-primary">
                         Log in <span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
@@ -117,7 +116,7 @@ export default function Navbar() {
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="bg-main/10 backdrop-blur-lg fixed inset-y-0 right-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-end">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img className="h-14 w-auto" src={logo.src} alt="" />
                         </a>
@@ -134,13 +133,13 @@ export default function Navbar() {
                         <div className="-my-6 divide-y divide-gray-500">
                             <div className="space-y-2 py-6">
                                 <a
-                                    href="#"
+                                    href="/resume"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-text hover:bg-gray-50 hover:text-primary"
                                 >
                                     Resume
                                 </a>
                                 <a
-                                    href="#"
+                                    href="/about"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-text hover:bg-gray-50 hover:text-primary"
                                 >
                                     About Me
@@ -173,7 +172,7 @@ export default function Navbar() {
                             </div>
                             <div className="py-6">
                                 <a
-                                    href="#"
+                                    href="/login"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-text font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-primary"
                                 >
                                     Log in

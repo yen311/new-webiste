@@ -11,7 +11,7 @@
 }
 
 .bg-radial-from-center {
-  --tw-gradient-stops: var(--tw-gradient-from, #1e40af), var(--tw-gradient-to, #eff6ff);
+  --tw-gradient-stops: var(--tw-gradient-from, #1e40af), var(--tw-gradient-to, #ff0101);
   background-image: radial-gradient(circle, var(--tw-gradient-stops));
   background-size: 300% 300%;
   animation: gradient-shift 10s ease infinite;

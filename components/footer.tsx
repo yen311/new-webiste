@@ -9,12 +9,12 @@ import {
 
 function footer() {
     return (
-        <footer className='flex justify-around items-center p-24 mx-auto w-9/12 border-t border-gray-300'>
+        <footer className='flex justify-around items-center p-24 mx-auto w-9/12 border-t border-gray-300  text-stone-200'>
             <div className="flex flex-1 flex-col justify-between items-center space-y-2 > *">
                 <img className="bg-gray-500 rounded-full w-40 h-40" src={Image.src} alt="404" />
-                <p className="font-bold text-gray-900 text-opacity-80 text-3xl" >Yen Kuo</p>
+                <p className="font-bold text-opacity-80 text-3xl" >Yen Kuo</p>
                 <a
-                    className="font-semibold text-gray-900 text-opacity-80 text-xs hover:text-white"
+                    className="font-semibold text-opacity-80 text-xs hover:text-stone-500"
                     href="mailto:kuoyen5@gmail.com"
                     target='_blank'
                 >
@@ -26,7 +26,7 @@ function footer() {
                         target='_blank'
                     >
                         <FaGithub
-                            className='hover:text-white w-6 h-6'
+                            className='hover:text-stone-500 w-6 h-6'
                         />
                     </a>
                     <a
@@ -34,7 +34,7 @@ function footer() {
                         target='_blank'
                     >
                         <FaFacebook
-                            className='hover:text-white w-6 h-6'
+                            className='hover:text-stone-500 w-6 h-6'
                         />
                     </a>
                     <a
@@ -42,7 +42,7 @@ function footer() {
                         target='_blank'
                     >
                         <FaLinkedin
-                            className='hover:text-white w-6 h-6'
+                            className='hover:text-stone-500 w-6 h-6'
                         />
                     </a>
                     <a
@@ -50,7 +50,7 @@ function footer() {
                         target='_blank'
                     >
                         <FaInstagram
-                            className='hover:text-white w-6 h-6'
+                            className='hover:text-stone-500 w-6 h-6'
                         />
                     </a>
 
@@ -58,7 +58,7 @@ function footer() {
             </div>
             <div className='flex-1'>
                 <h2 className="text-2xl font-bold mb-4">About</h2>
-                <p className="text-gray-900 mb-4">
+                <p className="mb-4">
                     Hello, I'm Yen. The full stack software developer based in Adelaide.
                     Currently mainly focus on Django, React.js, and public cloud platform (Azure, AWS).
                     I'm also the Alumni of Australian National University and Portland State University.
