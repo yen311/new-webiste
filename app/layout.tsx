@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "../components/navbar";
+import Footer from "../components/footer";
 import "./globals.css";
+import ClientApplication from "./clientApplication";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,14 +17,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NavBar />
-        {children}
-        <h1>Hello</h1>
+      <body className={`${inter.className}`}>
+        <ClientApplication>
+          <div className="bg-radial-from-center">
+            <NavBar />
+            {children}
+            <Footer />
+          </div>
+        </ClientApplication>
       </body>
-
     </html>
   );
 }

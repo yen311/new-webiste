@@ -1,4 +1,6 @@
+import { text } from "stream/consumers";
 import type { Config } from "tailwindcss";
+const colors = require('tailwindcss/colors')
 
 const config: Config = {
   content: [
@@ -8,10 +10,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        main: "rgba(var(--main))",
+        primary: "rgba(var(--primary))",
+        secondary: "rgba(var(--secondary))",
+        background: "rgba(var(--background))",
+        text: "rgba(var(--text))",
       },
     },
   },

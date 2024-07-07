@@ -3,31 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --main: 255, 255, 255;
+  --background: 250, 250, 250;
+  --primary: 30, 64, 175;
+  --secondary: 0, 0, 0;
+  --text: 0, 0, 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.bg-radial-from-center {
+  --tw-gradient-stops: var(--tw-gradient-from, #1e40af), var(--tw-gradient-to, #eff6ff);
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  background-size: 300% 300%;
+  animation: gradient-shift 10s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 0%;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  20% {
+    background-position: 25% 75%;
+  }
+  40% {
+    background-position: 75% 25%;
+  }
+  60% {
+    background-position: 50% 50%;
+  }
+  80% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
