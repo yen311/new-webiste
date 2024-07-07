@@ -115,7 +115,7 @@ export default function Navbar() {
             <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="bg-main/50 backdrop-blur-lg fixed inset-y-0 right-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div className="flex items-center justify-end">
+                    <div className="flex items-center justify-end ">
                         <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img className="h-14 w-auto" src={logo.src} alt="" />

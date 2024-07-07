@@ -9,8 +9,8 @@ import {
 
 function footer() {
     return (
-        <footer className='flex justify-around items-center p-24 mx-auto w-9/12 border-t border-gray-300  text-stone-200'>
-            <div className="flex flex-1 flex-col justify-between items-center space-y-2 > *">
+        <footer className='flex flex-col justify-around items-center p-4 lg:p-24 mx-auto w-9/12 border-t border-gray-300 text-stone-200'>
+            <div className="flex flex-1 flex-col justify-between items-center mb-4 space-y-2 > *">
                 <img className="bg-gray-500 rounded-full w-40 h-40" src={Image.src} alt="404" />
                 <p className="font-bold text-opacity-80 text-3xl" >Yen Kuo</p>
                 <a
