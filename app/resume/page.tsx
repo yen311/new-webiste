@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import useScript from '../../components/hooks/useScript'
 import {
     SiReact,
@@ -21,6 +21,9 @@ import {
     SiTerraform,
     SiDynamics365,
 } from "react-icons/si";
+
+// import { getUrl } from 'aws-amplify/storage';
+
 
 const workExperience = [
     {
@@ -183,12 +186,43 @@ const skills = [
         ]
     }
 ]
+
 function ResumePage() {
     useScript(`https://cdn.credly.com/assets/utilities/embed.js`);
+
+    // const downloadResume = async () => {
+    //     try {
+    //         const getUrlResult = await getUrl({
+    //             path: 'public/files/Resume.pdf',
+    //             options: {
+    //                 validateObjectExistence: false,  // Check if object exists before creating a URL
+    //                 expiresIn: 20,// validity of the URL, in seconds. defaults to 900 (15 minutes) and maxes at 3600 (1 hour)
+    //                 useAccelerateEndpoint: false, // Whether to use accelerate endpoint
+    //             },
+    //         });
+    //         console.log(getUrlResult.url.toString());
+    //         return getUrlResult.url.toString();
+    //     }
+    //     catch (error) {
+    //         console.error('Error loading resume', error);
+    //         return '';
+    //     }
+    // }
+
     return (
         <main className="flex flex-col items-center justify-between p-4 lg:p-24 text-white">
             <div className="w-full p-6 lg:px-16 bg-white/30 rounded-lg shadow-lg">
-                <h1 className="text-3xl font-bold pb-4 mb-4 border-b border-gray-300 border-dotted">Resume</h1>
+                <div className='flex items-center justify-between pb-4 mb-4 border-b border-gray-300 border-dotted'>
+                    <h1 className="text-3xl font-bold">Resume</h1>
+                    <a
+                        target='_blank'
+                        href='https://yenwebsitebucket83ca8-dev.s3.ap-southeast-2.amazonaws.com/public/files/Resume.pdf'
+                        className='bg-blue-500 text-white font-bold py-2 px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105 '
+                    >
+                        Download Resume
+                    </a>
+                </div>
+
                 <h2 className="text-xl font-bold">Work Experience</h2>
                 {workExperience.map((job, index) => (
                     <div key={index} className='my-2 p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *'>
@@ -224,7 +258,7 @@ function ResumePage() {
                         </div>
                         <div className='flex flex-wrap'>
                             {skill.items.map((item, index) => (
-                                <div key={index} className='flex items-center space-x-1 mx-2 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10'>
+                                <div key={index} className='flex items-center space-x-1 mx-2 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 mb-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10'>
                                     <item.icon color={item.color} />
                                     <span>{item.title}</span>
                                 </div>

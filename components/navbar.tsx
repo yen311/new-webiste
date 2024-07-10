@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import {
     Dialog,
     DialogPanel,
@@ -17,11 +18,12 @@ import {
     CursorArrowRaysIcon,
     FingerPrintIcon,
     XMarkIcon,
-    MoonIcon,
-    SunIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import logo from '../public/logo.png';
+import logo from '@/public/logo.png';
+import { signOut, getCurrentUser, type AuthUser } from 'aws-amplify/auth';
+import { useRouter } from 'next/navigation'
+
 
 const blogs = [
     { title: 'How to bridge a native SwiftUI view to React Native', description: 'Get a better understanding of your traffic...', href: '#', icon: ChartPieIcon },
@@ -39,6 +41,29 @@ function classNames(...classes) {
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const router = useRouter()
+    const [user, setUser] = useState<AuthUser | null>(null);
+    const handleSignOut = async () => {
+        await signOut({ global: true });
+        router.push('/login')
+    }
+
+    const pathname = usePathname()
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const currentUser = await getCurrentUser();
+                console.log('username:', currentUser)
+                setUser(currentUser);
+            }
+            catch (error) {
+                console.log(error);
+                setUser(null);
+            }
+        }
+        getUser();
+    }, [pathname])
 
     return (
         <header className="bg-white bg-opacity-30 backdrop-blur-md">
@@ -106,10 +131,27 @@ export default function Navbar() {
                         </PopoverPanel>
                     </Popover>
                 </PopoverGroup>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="/login" className="text-sm font-semibold leading-6 text-main hover:text-primary">
-                        Log in <span aria-hidden="true">&rarr;</span>
-                    </a>
+                <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
+                    {user?.username ?
+                        <>
+                            <div className='flex flex-col justify-end items-center'>
+                                <div className='mx-2 px-2 text-primary/50 font-bold'>
+                                    Hello, {user?.signInDetails?.loginId}
+                                </div>
+                                <a href="/admin" className="text-sm font-semibold leading-6 text-main hover:text-primary">
+                                    Admin Page
+                                </a>
+                            </div>
+                            <button
+                                type="button"
+                                className="transition ease-in-out delay-150 bg-white/70 hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 rounded"
+                                onClick={handleSignOut}
+                            >logout</button>
+                        </> :
+                        <a href="/login" className="text-sm font-semibold leading-6 text-main hover:text-primary">
+                            Log in <span aria-hidden="true">&rarr;</span>
+                        </a>}
+
                 </div>
             </nav>
             <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -171,12 +213,18 @@ export default function Navbar() {
                                 </Disclosure>
                             </div>
                             <div className="py-6">
-                                <a
-                                    href="/login"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-text font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-primary"
-                                >
-                                    Log in
-                                </a>
+                                {user?.username ?
+                                    <a
+                                        type="button"
+                                        className="transition ease-in-out delay-150 bg-white/70 hover:bg-red-500 text-red-500 font-semibold hover:text-white -mx-3 block rounded-lg px-3 py-2.5 leading-7"
+                                        onClick={handleSignOut}
+                                    >logout</a> :
+                                    <a
+                                        href="/login"
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-text font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-primary"
+                                    >
+                                        Log in
+                                    </a>}
                             </div>
                         </div>
                     </div>

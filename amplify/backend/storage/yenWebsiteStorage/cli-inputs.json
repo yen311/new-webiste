@@ -1,0 +1,13 @@
+{
+  "resourceName": "yenWebsiteStorage",
+  "policyUUID": "32d04f7e",
+  "bucketName": "yenwebsitebucket",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ"
+  ],
+  "groupAccess": {}
+}
