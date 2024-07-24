@@ -134,14 +134,9 @@ export default function Navbar() {
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
                     {user?.username ?
                         <>
-                            <div className='flex flex-col justify-end items-center'>
-                                <div className='mx-2 px-2 text-primary/50 font-bold'>
-                                    Hello, {user?.signInDetails?.loginId}
-                                </div>
-                                <a href="/admin" className="text-sm font-semibold leading-6 text-main hover:text-primary">
-                                    Admin Page
-                                </a>
-                            </div>
+                            <a href="/admin" className="text-sm font-semibold leading-6 text-main hover:text-primary mx-8">
+                                Admin Page
+                            </a>
                             <button
                                 type="button"
                                 className="transition ease-in-out delay-150 bg-white/70 hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 rounded"

@@ -6,5 +6,6 @@ input AMPLIFY {
 type Blog @model {
   id: ID!
   title: String!
+  description: String
   content: String
 }

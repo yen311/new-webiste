@@ -32,10 +32,15 @@ const workExperience = [
         date: '2022/01 - Present',
         position: 'Full Stack Software Developer',
         tasks: [
-            'Developed and maintained web applications using React, Node.js, and AWS services.',
-            'Collaborated with team members to design and implement new features.',
-            'Participated in code reviews and provided feedback to improve code quality.',
-            'Worked with stakeholders to gather requirements and define project scope.'
+            'Developed and Maintained Company’s Product using Django and React.',
+            'Developed web application for SA Gov used for searching, viewing, and downloading the files from public cloud’s archive storage (Azure).',
+            'Set up a pipeline for containerise application images and deploying to target AKS cluster.',
+            'Experienced multiple cloud services, such as azure storage account / S3, logic app for email triggering, Virtual Machine / Ec2, Amplify etc.',
+            'Templating the resources deployment with ARM templates and terraform.',
+            'Integrate internal system synchronization between Django and Dynamics Business Central by Restful Api endpoints.',
+            'Integrate with Celery to be able to run asynchronous background tasks / corn jobs.',
+            'Integrate Redis cache to improve querying performance with PostgreSQL.',
+            'Prototyped mobile app using React Native and bridged native Swift UI views.',
         ]
     },
     {

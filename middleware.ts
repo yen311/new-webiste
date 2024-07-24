@@ -16,11 +16,11 @@ export async function middleware(request: NextRequest) {
     }
     catch (error) {
         console.log(error);
-        //return NextResponse.redirect(new URL('/login', request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
     }
     return NextResponse.next()
 }
 
 export const config = {
-    matcher: ['/admin'],
+    matcher: ['/admin/:path*'],
 }
