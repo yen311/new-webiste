@@ -5,7 +5,7 @@ function AboutPage() {
         <main className="flex flex-col items-center justify-between p-24">
             <div className="w-full p-6 bg-white/30 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-4">About Page</h2>
-                <p className="text-sm font-semibold">
+                <div className="text-sm font-semibold">
                     <p className='mb-4'>
                         Hello! I'm Yen Kuo, a passionate and dedicated full-stack software developer with nearly three years of experience in the tech industry. My journey into the world of software development began during my university studies, and since then, it has been a continuous learning adventure. I hold a Master of Computing from The Australian National University and a Bachelor of Business Administration in Finance from Portland State University, which provides me with a unique blend of technical and business acumen.
                     </p>
@@ -21,7 +21,7 @@ function AboutPage() {
                     <p className='mb-4'>
                         My collaborative nature and effective communication skills have been honed through working in Agile teams, ensuring I can deliver results on time and contribute positively to any team environment. Feel free to reach out to me via LinkedIn, GitHub, or visit my personal website to learn more about my work and projects. I'm excited about the future and the opportunity to contribute my skills and experiences to innovative projects.
                     </p>
-                </p>
+                </div>
             </div>
         </main>
     )
