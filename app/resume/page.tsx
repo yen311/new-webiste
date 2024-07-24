@@ -46,7 +46,7 @@ const workExperience = [
     {
         company: 'CBRLife Media',
         location: 'Canberra, Australia',
-        date: '2021/07 - 2022/10',
+        date: '2021/07 - 2021/10',
         position: 'Frontend Developer',
         tasks: [
             "Developing and maintained company main website by WordPress(https://www.cbrlife.com.au)",
