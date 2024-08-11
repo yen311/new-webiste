@@ -80,8 +80,8 @@ const ForgetPassportPage = () => {
         }
     }
     return (
-        <main className="flex flex-col items-center justify-between p-24">
-            <div className="w-4/12 p-6 bg-white/30 rounded-lg shadow-lg">
+        <main className="flex flex-col items-center justify-between p-4 lg:p-24 text-white">
+            <div className="w-11/12 lg:w-6/12 p-6 bg-white/30 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-5 text-center">Reset Password</h2>
                 <div className="w-full px-8 py-4">
                     <div className="relative flex items-center justify-between w-full">

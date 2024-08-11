@@ -222,7 +222,7 @@ function ResumePage() {
                     <a
                         target='_blank'
                         href='https://yenwebsitebucket83ca8-dev.s3.ap-southeast-2.amazonaws.com/public/files/Resume.pdf'
-                        className='bg-blue-500 text-white font-bold py-2 px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105 '
+                        className='bg-blue-500 text-white font-bold py-2 px-2 lg:px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105 '
                     >
                         Download Resume
                     </a>

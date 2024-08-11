@@ -61,8 +61,8 @@ function LoginPage() {
         }
     }
     return (
-        <main className="flex flex-col items-center justify-between p-24">
-            <div className="w-4/12 p-6 bg-white/30 rounded-lg shadow-lg">
+        <main className="flex flex-col items-center justify-between p-4 lg:p-24 text-white">
+            <div className="w-11/12 lg:w-6/12 p-6 bg-white/30 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-5 text-center">Sign In</h2>
                 <div className="space-y-4">
                     <div>
