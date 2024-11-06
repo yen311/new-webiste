@@ -56,3 +56,7 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+.prettierignore
+prettier.config.cjs
+.idea
