@@ -1,7 +1,7 @@
 import { useTypewriter } from "./hooks/useTypewriter";
 
-const Typewriter = ({ text, speed }) => {
-  const displayText = useTypewriter(text, speed);
+const Typewriter = ({ texts }) => {
+  const displayText = useTypewriter(texts);
 
   return <p>{displayText}</p>;
 };
