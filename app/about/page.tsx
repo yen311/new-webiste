@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Typewriter from "@/components/Typewriter";
 import { Counter } from "@/components/Counter";
-import Sentence from "@/components/Sentence";
+import Card from "@/components/Card";
 
 function AboutPage() {
   return (
@@ -17,30 +17,30 @@ function AboutPage() {
           <h4 className="pt-4 pb-2">Fun Facts</h4>
         </div>
         <div className="text-lg font-normal">
-          <Sentence>
-            Hey G'Day! Welcome to my personal website. I'm glad you're here! 🎉
-          </Sentence>
-          <Sentence>
-            &lt;Component&gt;I'm a software engineer 👨🏻‍💻 with{" "}
-            <Counter
-              date={new Date("January 17, 2022 09:00:00")}
-              color={"darkblue"}
-            />{" "}
-            year of experience in Adelaide, Australia.&lt;/Component&gt;
-          </Sentence>
-          <Sentence>
-            Currently, I'm working at a logistics software company —{" "}
-            <a
-              className="text-orange-500"
-              href="https://jaix.com.au/"
-              target="blank"
+          <div className="rounded-2xl bg-white/50 my-4 p-4">
+            Hey G'Day!
+            <br /> Welcome to my personal website. I'm glad you're here! 🎉
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-4">
+            <Card top="I've been a software engineer 👨🏻‍💻 for" bottom="years">
+              <Counter
+                date={new Date("January 17, 2022 09:00:00")}
+                color={"darkblue"}
+              />
+            </Card>
+            <Card
+              top="Currently, I'm working at"
+              bottom="in Adelaide, South Australia"
             >
-              JAIX
-            </a>{" "}
-            in Adelaide, where we're building a comprehensive ERP system for
-            logistics companies across Australia! 🚚 Doesn’t that sound cool &&
-            exciting? 😎
-          </Sentence>
+              <a
+                className="text-orange-500"
+                href="https://jaix.com.au/"
+                target="blank"
+              >
+                JAIX 🚚 - a logistics software company
+              </a>{" "}
+            </Card>
+          </div>
         </div>
       </div>
     </main>
