@@ -3,25 +3,23 @@ import React, { useState } from "react";
 import Typewriter from "@/components/Typewriter";
 import { Counter } from "@/components/Counter";
 import Card from "@/components/Card";
+import FlexStack from "@/components/FlexStack";
+import { SiReact } from "react-icons/si";
 
 function AboutPage() {
   return (
     <main className="flex flex-col items-center justify-between p-4 lg:p-16 text-white">
-      <div className="w-full p-6 lg:px-16 bg-white/30 rounded-lg shadow-lg">
-        <div className="flex flex-col items-start justify-between border-b border-gray-300 border-dotted">
-          <h1 className="text-3xl font-bold">
+      <div className="w-full lg:px-16 lg:bg-white/30 rounded-lg lg:shadow-lg">
+        <div className="flex flex-col items-start justify-between border-b border-gray-300 border-dotted mb-4">
+          <h1 className="text-3xl font-bold lg:mt-4">
             <Typewriter
               texts={["README.MD", "<p>ABOUT ME</p>", "HELLO STRANGER👋!"]}
             ></Typewriter>
           </h1>
-          <h4 className="pt-4 pb-2">Fun Facts</h4>
+          <h4 className="pb-2">Fun Facts</h4>
         </div>
         <div className="text-lg font-normal">
-          <div className="rounded-2xl bg-white/50 my-4 p-4">
-            Hey G'Day!
-            <br /> Welcome to my personal website. I'm glad you're here! 🎉
-          </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-4">
+          <FlexStack>
             <Card top="I've been a software engineer 👨🏻‍💻 for" bottom="years">
               <Counter
                 date={new Date("January 17, 2022 09:00:00")}
@@ -40,7 +38,45 @@ function AboutPage() {
                 JAIX 🚚 - a logistics software company
               </a>{" "}
             </Card>
-          </div>
+            <Card
+              top="My favorite city is"
+              bottom="I studied and met my wife there"
+            >
+              Portland, Oregon 🌲
+            </Card>
+            <Card
+              top="We have a cat named"
+              bottom="She's a grey british shorthair"
+            >
+              August 🐱
+            </Card>
+            <Card
+              top="My favorite framework is"
+              bottom="What I'm using to build this site"
+            >
+              <div className="flex items-center">
+                <a
+                  href="https://react.dev/"
+                  target="blank"
+                  className="text-[#61DAFB] mx-2"
+                >
+                  React
+                </a>
+                <SiReact color="#61DAFB" />
+              </div>
+            </Card>
+            <Card top="I was borned" bottom="years in Taiwan.">
+              <Counter
+                date={new Date("March 11, 1997 09:00:00")}
+                color={"IndianRed"}
+              />
+            </Card>
+            <Card top="I'm a" bottom="by heart">
+              <a href="https://www.16personalities.com/" target="blank">
+                ISTJ
+              </a>
+            </Card>
+          </FlexStack>
         </div>
       </div>
     </main>

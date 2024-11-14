@@ -4,7 +4,7 @@ import { FaGithub, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 function footer() {
   return (
-    <footer className="flex flex-col justify-around items-center p-4 lg:p-8 mx-auto w-9/12 border-t border-gray-300 text-stone-200">
+    <footer className="flex flex-col justify-around items-center pt-2 lg:p-8 mx-auto w-11/12 lg:w-9/12 border-t border-gray-300 text-stone-200">
       <div className="flex flex-1 flex-col justify-between items-center mb-4 space-y-2 > *">
         <img
           className="bg-gray-500 rounded-full w-40 h-40"
@@ -38,7 +38,7 @@ function footer() {
         </div>
       </div>
       <div className="flex-1">
-        <h2 className="text-2xl font-bold mb-4">About</h2>
+        <h2 className="text-2xl font-bold mb-2 lg:mb-4">About</h2>
         <p className="mb-4">
           <span className="font-bold">Hello, I'm Yen</span> — a passionate
           full-stack software developer based in Adelaide, currently focusing
@@ -53,7 +53,7 @@ function footer() {
           while staying up to date with the latest technologies as well.
         </p>
       </div>
-      <div className="flex-1 mt-2 text-xs text-gray-300">
+      <div className="flex-1 my-2 text-xs text-gray-300">
         HandCrafted by Yen Kuo © 2024
       </div>
     </footer>

@@ -26,17 +26,32 @@ import {
 
 const workExperience = [
   {
+    company: "JAIX Logistics Software",
+    location: "Adelaide, Australia",
+    date: "2024/09 - Present",
+    position: "Software Developer",
+    tasks: [
+      "Developed and implemented scalable Web APIs using ASP.NET Core",
+      "Developed driver application using .NET MAUI with MVVM pattern",
+      "Maintained warehouse smart scanning application using Xamarin Android",
+      "Modified and optimized the WinForms UI to alignment with business requirements.",
+      "Implemented logging with Serilog and Elasticsearch.",
+      "Collaborated in an Agile team.",
+      "Maintained and refactored legacy codebase ensuring alignment with current development standards",
+    ],
+  },
+  {
     company: "Appcentric (jtwo solutions)",
     location: "Adelaide, Australia",
-    date: "2022/01 - Present",
-    position: "Full Stack Software Developer",
+    date: "2022/01 - 2024/09",
+    position: "Software Developer",
     tasks: [
-      "Developed and Maintained Company’s Product using Django and React.",
-      "Developed web application for SA Gov used for searching, viewing, and downloading the files from public cloud’s archive storage (Azure).",
-      "Set up a pipeline for containerise application images and deploying to target AKS cluster.",
-      "Experienced multiple cloud services, such as azure storage account / S3, logic app for email triggering, Virtual Machine / Ec2, Amplify etc.",
+      "Developed and Maintained Cloud migration web app with Django and React.",
+      "Developed web application for SA Gov Agency with Django.",
+      "Set up a pipeline for containerise application and deploying to AKS.",
+      "Experienced and famliar with multiple cloud services.",
       "Templating the resources deployment with ARM templates and terraform.",
-      "Integrate internal system synchronization between Django and Dynamics Business Central by Restful Api endpoints.",
+      "Integrate internal system synchronization with API.",
       "Integrate with Celery to be able to run asynchronous background tasks / corn jobs.",
       "Integrate Redis cache to improve querying performance with PostgreSQL.",
       "Prototyped mobile app using React Native and bridged native Swift UI views.",
@@ -214,13 +229,13 @@ function ResumePage() {
 
   return (
     <main className="flex flex-col items-center justify-between p-4 lg:p-16 text-white">
-      <div className="w-full p-6 lg:px-16 bg-white/30 rounded-lg shadow-lg">
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 border-dotted">
+      <div className="w-full lg:px-16 lg:bg-white/30 rounded-lg shadow-lg">
+        <div className="flex items-center justify-between py-4 mb-4 border-b border-gray-300 border-dotted">
           <h1 className="text-3xl font-bold">Resume</h1>
           <a
             target="_blank"
             href="https://yenwebsitebucket83ca8-dev.s3.ap-southeast-2.amazonaws.com/public/files/Resume.pdf"
-            className="bg-blue-500 text-white font-bold py-2 px-2 lg:px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105 "
+            className="bg-amber-500/70 text-white font-bold py-2 px-2 lg:px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105 "
           >
             Download Resume
           </a>
@@ -230,7 +245,7 @@ function ResumePage() {
         {workExperience.map((job, index) => (
           <div
             key={index}
-            className="my-2 p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
+            className="my-2 p-3 lg:p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
           >
             <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
               <h3 className="text-lg font-bold">{job.company}</h3>
@@ -263,7 +278,7 @@ function ResumePage() {
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="my-2 p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
+            className="my-2 p-2 lg:p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
           >
             <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
               <h3 className="text-lg font-bold">{skill.category}</h3>
