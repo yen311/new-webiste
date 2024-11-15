@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function AdminPage() {
-
-    return (
-        <main className="flex flex-col items-start justify-between p-24">
-
-        </main>
-    )
+  return <>Admin Page</>;
 }
 
-export default AdminPage
+export default AdminPage;

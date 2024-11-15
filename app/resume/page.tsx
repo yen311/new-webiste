@@ -21,6 +21,7 @@ import {
   SiTerraform,
   SiDynamics365,
 } from "react-icons/si";
+import PageWrapper from "@/components/PageWrapper";
 
 // import { getUrl } from 'aws-amplify/storage';
 
@@ -208,28 +209,9 @@ const skills = [
 function ResumePage() {
   useScript(`https://cdn.credly.com/assets/utilities/embed.js`);
 
-  // const downloadResume = async () => {
-  //     try {
-  //         const getUrlResult = await getUrl({
-  //             path: 'public/files/Resume.pdf',
-  //             options: {
-  //                 validateObjectExistence: false,  // Check if object exists before creating a URL
-  //                 expiresIn: 20,// validity of the URL, in seconds. defaults to 900 (15 minutes) and maxes at 3600 (1 hour)
-  //                 useAccelerateEndpoint: false, // Whether to use accelerate endpoint
-  //             },
-  //         });
-  //         console.log(getUrlResult.url.toString());
-  //         return getUrlResult.url.toString();
-  //     }
-  //     catch (error) {
-  //         console.error('Error loading resume', error);
-  //         return '';
-  //     }
-  // }
-
   return (
-    <main className="flex flex-col items-center justify-between p-4 lg:p-16 text-white">
-      <div className="w-full lg:px-16 lg:bg-white/30 rounded-lg shadow-lg">
+    <>
+      <PageWrapper disappearOnMobile={true}>
         <div className="flex items-center justify-between py-4 mb-4 border-b border-gray-300 border-dotted">
           <h1 className="text-3xl font-bold">Resume</h1>
           <a
@@ -303,8 +285,8 @@ function ResumePage() {
           data-share-badge-id="948aa351-269b-46d7-a63e-66c3e33f3ee9"
           data-share-badge-host="https://www.credly.com"
         />
-      </div>
-    </main>
+      </PageWrapper>
+    </>
   );
 }
 

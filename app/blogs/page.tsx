@@ -5,6 +5,8 @@ import Blog from "@/components/Blog";
 import { generateClient } from "aws-amplify/api";
 import { listBlogs } from "@/graphql/queries";
 import { useRouter } from "next/navigation";
+import PageWrapper from "@/components/PageWrapper";
+import { Divider } from "@aws-amplify/ui-react";
 
 const client = generateClient();
 
@@ -37,16 +39,24 @@ function BlogsPage() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-between p-24 text-white">
-      <div className="w-full p-6 bg-white/30 rounded-lg shadow-lg">
+    <>
+      <PageWrapper disappearOnMobile={true} noPadding={true}>
         <h2 className="text-2xl font-bold pb-4 mb-4 border-b border-gray-300 border-dotted">
           Blogs List
         </h2>
-        {blogs.map((blog: Blog) => (
-          <Blog blog={blog} />
-        ))}
-      </div>
-    </main>
+        {blogs.map((blog: Blog, index: Number) => {
+          if (index == blogs.length - 1) {
+            return <Blog key={blog.id} blog={blog} />;
+          }
+          return (
+            <>
+              <Blog key={blog.id} blog={blog} />
+              <Divider />
+            </>
+          );
+        })}
+      </PageWrapper>
+    </>
   );
 }
 

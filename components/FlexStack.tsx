@@ -6,7 +6,7 @@ interface Props {
 
 const FlexStack: React.FC<Props> = ({ children }) => {
   return (
-    <div className="flex flex-wrap flex-col lg:flex-row lg:gap-y-4 mb-4 lg:mb-6">
+    <div className="flex flex-wrap flex-col gap-y-2 lg:mx-auto lg:flex-row lg:gap-y-4 lg:gap-x-2">
       {children}
     </div>
   );

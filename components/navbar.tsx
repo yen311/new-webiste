@@ -99,7 +99,7 @@ export default function Navbar() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+        <PopoverGroup className="hidden lg:flex lg:gap-x-12 z-50">
           <a
             href="/resume"
             className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary"
@@ -112,7 +112,7 @@ export default function Navbar() {
           >
             README
           </a>
-          <Popover className="relative group">
+          <Popover className="relative z-50 group">
             <PopoverButton className="transition ease-in-out delay-150 flex items-center gap-x-1 text-sm font-semibold leading-6 text-main group-hover:text-primary">
               Blogs
               <ChevronDownIcon
@@ -122,7 +122,7 @@ export default function Navbar() {
             </PopoverButton>
             <PopoverPanel
               transition
-              className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              className="absolute z-50 -left-8 top-full mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div className="p-4">
                 {blogs.map((item) => (
@@ -251,6 +251,13 @@ export default function Navbar() {
                             {item.title}
                           </DisclosureButton>
                         ))}
+                        <DisclosureButton
+                          as="a"
+                          href={"/blogs"}
+                          className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-red-600 hover:bg-gray-50 hover:text-primary"
+                        >
+                          View All Blogs
+                        </DisclosureButton>
                       </DisclosurePanel>
                     </>
                   )}

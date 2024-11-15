@@ -5,13 +5,14 @@ import { Counter } from "@/components/Counter";
 import Card from "@/components/Card";
 import FlexStack from "@/components/FlexStack";
 import { SiReact } from "react-icons/si";
+import PageWrapper from "@/components/PageWrapper";
 
 function AboutPage() {
   return (
-    <main className="flex flex-col items-center justify-between p-4 lg:p-16 text-white">
-      <div className="w-full lg:px-16 lg:bg-white/30 rounded-lg lg:shadow-lg">
+    <>
+      <PageWrapper disappearOnMobile={true}>
         <div className="flex flex-col items-start justify-between border-b border-gray-300 border-dotted mb-4">
-          <h1 className="text-3xl font-bold lg:mt-4">
+          <h1 className="text-3xl font-bold">
             <Typewriter
               texts={["README.MD", "<p>ABOUT ME</p>", "HELLO STRANGER👋!"]}
             ></Typewriter>
@@ -78,8 +79,8 @@ function AboutPage() {
             </Card>
           </FlexStack>
         </div>
-      </div>
-    </main>
+      </PageWrapper>
+    </>
   );
 }
 
