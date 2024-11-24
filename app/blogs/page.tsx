@@ -46,13 +46,16 @@ function BlogsPage() {
         </h2>
         {blogs.map((blog: Blog, index: Number) => {
           if (index == blogs.length - 1) {
-            return <Blog key={blog.id} blog={blog} />;
+            return (
+            <a href={`/blogs/${blog.id}`}>
+              <Blog key={blog.id} blog={blog} />
+            </a>);
           }
           return (
-            <>
+            <a href={`/blogs/${blog.id}`}>
               <Blog key={blog.id} blog={blog} />
               <Divider />
-            </>
+            </a>
           );
         })}
       </PageWrapper>

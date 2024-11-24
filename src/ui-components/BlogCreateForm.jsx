@@ -9,13 +9,11 @@ import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { getBlog } from "../graphql/queries";
-import { updateBlog } from "../graphql/mutations";
+import { createBlog } from "../../graphql/mutations";
 const client = generateClient();
-export default function BlogUpdateForm(props) {
+export default function BlogCreateForm(props) {
   const {
-    id: idProp,
-    blog: blogModelProp,
+    clearOnSuccess = true,
     onSuccess,
     onError,
     onSubmit,
@@ -26,37 +24,24 @@ export default function BlogUpdateForm(props) {
   } = props;
   const initialValues = {
     title: "",
+    description: "",
     content: "",
   };
   const [title, setTitle] = React.useState(initialValues.title);
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
   const [content, setContent] = React.useState(initialValues.content);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = blogRecord
-      ? { ...initialValues, ...blogRecord }
-      : initialValues;
-    setTitle(cleanValues.title);
-    setContent(cleanValues.content);
+    setTitle(initialValues.title);
+    setDescription(initialValues.description);
+    setContent(initialValues.content);
     setErrors({});
   };
-  const [blogRecord, setBlogRecord] = React.useState(blogModelProp);
-  React.useEffect(() => {
-    const queryData = async () => {
-      const record = idProp
-        ? (
-            await client.graphql({
-              query: getBlog.replaceAll("__typename", ""),
-              variables: { id: idProp },
-            })
-          )?.data?.getBlog
-        : blogModelProp;
-      setBlogRecord(record);
-    };
-    queryData();
-  }, [idProp, blogModelProp]);
-  React.useEffect(resetStateValues, [blogRecord]);
   const validations = {
     title: [{ type: "Required" }],
+    description: [],
     content: [],
   };
   const runValidationTasks = async (
@@ -86,7 +71,8 @@ export default function BlogUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           title,
-          content: content ?? null,
+          description,
+          content,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -117,16 +103,18 @@ export default function BlogUpdateForm(props) {
             }
           });
           await client.graphql({
-            query: updateBlog.replaceAll("__typename", ""),
+            query: createBlog.replaceAll("__typename", ""),
             variables: {
               input: {
-                id: blogRecord.id,
                 ...modelFields,
               },
             },
           });
           if (onSuccess) {
             onSuccess(modelFields);
+          }
+          if (clearOnSuccess) {
+            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -135,7 +123,7 @@ export default function BlogUpdateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "BlogUpdateForm")}
+      {...getOverrideProps(overrides, "BlogCreateForm")}
       {...rest}
     >
       <TextField
@@ -148,6 +136,7 @@ export default function BlogUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               title: value,
+              description,
               content,
             };
             const result = onChange(modelFields);
@@ -164,6 +153,32 @@ export default function BlogUpdateForm(props) {
         {...getOverrideProps(overrides, "title")}
       ></TextField>
       <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        value={description}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              description: value,
+              content,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
+      ></TextField>
+      <TextField
         label="Content"
         isRequired={false}
         isReadOnly={false}
@@ -173,6 +188,7 @@ export default function BlogUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               title,
+              description,
               content: value,
             };
             const result = onChange(modelFields);
@@ -193,14 +209,13 @@ export default function BlogUpdateForm(props) {
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Reset"
+          children="Clear"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || blogModelProp)}
-          {...getOverrideProps(overrides, "ResetButton")}
+          {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
           gap="15px"
@@ -210,10 +225,7 @@ export default function BlogUpdateForm(props) {
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={
-              !(idProp || blogModelProp) ||
-              Object.values(errors).some((e) => e?.hasError)
-            }
+            isDisabled={Object.values(errors).some((e) => e?.hasError)}
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

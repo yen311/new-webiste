@@ -6,7 +6,6 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { Blog } from "../src/API.ts";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -22,29 +21,31 @@ export declare type ValidationResponse = {
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type BlogUpdateFormInputValues = {
+export declare type BlogCreateFormInputValues = {
     title?: string;
+    description?: string;
     content?: string;
 };
-export declare type BlogUpdateFormValidationValues = {
+export declare type BlogCreateFormValidationValues = {
     title?: ValidationFunction<string>;
+    description?: ValidationFunction<string>;
     content?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type BlogUpdateFormOverridesProps = {
-    BlogUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
+export declare type BlogCreateFormOverridesProps = {
+    BlogCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     title?: PrimitiveOverrideProps<TextFieldProps>;
+    description?: PrimitiveOverrideProps<TextFieldProps>;
     content?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
-export declare type BlogUpdateFormProps = React.PropsWithChildren<{
-    overrides?: BlogUpdateFormOverridesProps | undefined | null;
+export declare type BlogCreateFormProps = React.PropsWithChildren<{
+    overrides?: BlogCreateFormOverridesProps | undefined | null;
 } & {
-    id?: string;
-    blog?: Blog;
-    onSubmit?: (fields: BlogUpdateFormInputValues) => BlogUpdateFormInputValues;
-    onSuccess?: (fields: BlogUpdateFormInputValues) => void;
-    onError?: (fields: BlogUpdateFormInputValues, errorMessage: string) => void;
-    onChange?: (fields: BlogUpdateFormInputValues) => BlogUpdateFormInputValues;
-    onValidate?: BlogUpdateFormValidationValues;
+    clearOnSuccess?: boolean;
+    onSubmit?: (fields: BlogCreateFormInputValues) => BlogCreateFormInputValues;
+    onSuccess?: (fields: BlogCreateFormInputValues) => void;
+    onError?: (fields: BlogCreateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: BlogCreateFormInputValues) => BlogCreateFormInputValues;
+    onValidate?: BlogCreateFormValidationValues;
 } & React.CSSProperties>;
-export default function BlogUpdateForm(props: BlogUpdateFormProps): React.ReactElement;
+export default function BlogCreateForm(props: BlogCreateFormProps): React.ReactElement;

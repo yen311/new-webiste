@@ -12,14 +12,8 @@
       "AmplifyAppId": "d1frmzet500jiv"
     },
     "categories": {
-      "api": {
-        "yenwebsite": {}
-      },
       "auth": {
         "yenwebsite0331ffa8": {}
-      },
-      "storage": {
-        "yenWebsiteStorage": {}
       }
     }
   }
