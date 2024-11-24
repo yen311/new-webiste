@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { type Blog as BlogType } from "./blog";
 import Blog from "@/components/Blog";
 import { generateClient } from "aws-amplify/api";
-import { listBlogs } from "@/graphql/queries";
 import { useRouter } from "next/navigation";
 import PageWrapper from "@/components/PageWrapper";
 import { Divider } from "@aws-amplify/ui-react";
@@ -47,9 +46,10 @@ function BlogsPage() {
         {blogs.map((blog: Blog, index: Number) => {
           if (index == blogs.length - 1) {
             return (
-            <a href={`/blogs/${blog.id}`}>
-              <Blog key={blog.id} blog={blog} />
-            </a>);
+              <a href={`/blogs/${blog.id}`}>
+                <Blog key={blog.id} blog={blog} />
+              </a>
+            );
           }
           return (
             <a href={`/blogs/${blog.id}`}>
