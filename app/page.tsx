@@ -1,7 +1,35 @@
+"use client";
 import PageWrapper from "@/components/PageWrapper";
 import { SiAwsamplify, SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import { useSprings, animated } from "@react-spring/web";
+
+const icons = [
+  {
+    Icon: SiNextdotjs,
+    href: "https://nextjs.org/",
+    color: "text-black",
+  },
+  {
+    Icon: SiTailwindcss,
+    href: "https://tailwindcss.com/",
+    color: "text-[#06B6D4]",
+  },
+  {
+    Icon: SiAwsamplify,
+    href: "https://docs.amplify.aws/nextjs/",
+    color: "text-[#FF9900]",
+  },
+];
 
 export default function Home() {
+  const springs = useSprings(
+    icons.length,
+    icons.map((_, index) => ({
+      from: { opacity: 0, transform: "translateX(500%)" },
+      to: { opacity: 1, transform: "translateX(0%)" },
+      delay: index * 300,
+    })),
+  );
   return (
     <PageWrapper disappearOnMobile={false}>
       <div className="space-y-4 > *">
@@ -11,15 +39,21 @@ export default function Home() {
           Tailwind CSS, and hosting on AWS amplify.
           <br />
           <div className="flex mt-4 space-x-4 > *">
-            <a href="https://nextjs.org/" target="_blank">
-              <SiNextdotjs className="inline-block w-10 h-10 transform transition duration-300 flash hover:rotate-180 text-black" />
-            </a>
-            <a href="https://tailwindcss.com/" target="_blank">
-              <SiTailwindcss className="inline-block w-10 h-10 transform transition duration-300 flash hover:rotate-180 text-[#06B6D4]" />
-            </a>
-            <a href="https://docs.amplify.aws/nextjs/" target="_blank">
-              <SiAwsamplify className="inline-block w-10 h-10 transform transition duration-300 flash hover:rotate-180 text-[#FF9900]" />
-            </a>
+            {springs.map((props, index) => {
+              const { Icon, href, color } = icons[index];
+              return (
+                <animated.a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={index}
+                  style={props}
+                  className={`inline-block w-10 h-10 transform transition duration-300 hover:rotate-180 ${color}`}
+                >
+                  <Icon className="w-10 h-10" />
+                </animated.a>
+              );
+            })}
           </div>
         </div>
         <p className="font-normal">Welcome to my website.</p>

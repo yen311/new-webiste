@@ -99,7 +99,7 @@ export default function Navbar() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12 z-50">
+        <div className="hidden lg:flex lg:gap-x-12 z-50">
           <a
             href="/resume"
             className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary"
@@ -112,58 +112,13 @@ export default function Navbar() {
           >
             README
           </a>
-          <Popover className="relative z-50 group">
-            <PopoverButton className="transition ease-in-out delay-150 flex items-center gap-x-1 text-sm font-semibold leading-6 text-main group-hover:text-primary">
-              Blogs
-              <ChevronDownIcon
-                className="h-5 w-5 flex-none text-main group-hover:text-primary"
-                aria-hidden="true"
-              />
-            </PopoverButton>
-            <PopoverPanel
-              transition
-              className="absolute z-50 -left-8 top-full mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-            >
-              <div className="p-4">
-                {blogs.map((item) => (
-                  <div
-                    key={item.title}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                  >
-                    <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon
-                        className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div className="flex-auto">
-                      <a
-                        href={item.href}
-                        className="block font-semibold text-gray-900"
-                      >
-                        {item.title}
-                        <span className="absolute inset-0" />
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="grid bg-gray-50">
-                <a
-                  href="/blogs"
-                  className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                >
-                  <PlayCircleIcon
-                    className="h-5 w-5 flex-none text-gray-400"
-                    aria-hidden="true"
-                  />
-                  View All Blogs
-                </a>
-              </div>
-            </PopoverPanel>
-          </Popover>
-        </PopoverGroup>
+          <a
+            href="/blogs"
+            className="transition ease-in-out delay-150 text-sm font-semibold leading-6 text-main border-b-2 hover:border-primary hover:border-b-2 hover:text-primary"
+          >
+            Blogs
+          </a>
+        </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
           {user?.username ? (
             <>
@@ -227,41 +182,12 @@ export default function Navbar() {
                 >
                   About Me
                 </a>
-                <Disclosure as="div" className="-mx-3">
-                  {({ open }) => (
-                    <>
-                      <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-text hover:bg-gray-50 hover:text-primary">
-                        Blogs
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? "rotate-180" : "",
-                            "h-5 w-5 flex-none",
-                          )}
-                          aria-hidden="true"
-                        />
-                      </DisclosureButton>
-                      <DisclosurePanel className="mt-2 space-y-2">
-                        {[...blogs].map((item) => (
-                          <DisclosureButton
-                            key={item.title}
-                            as="a"
-                            href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-text hover:bg-gray-50 hover:text-primary"
-                          >
-                            {item.title}
-                          </DisclosureButton>
-                        ))}
-                        <DisclosureButton
-                          as="a"
-                          href={"/blogs"}
-                          className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-red-600 hover:bg-gray-50 hover:text-primary"
-                        >
-                          View All Blogs
-                        </DisclosureButton>
-                      </DisclosurePanel>
-                    </>
-                  )}
-                </Disclosure>
+                <a
+                  href="/blogs"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-text hover:bg-gray-50 hover:text-primary"
+                >
+                  Blogs
+                </a>
               </div>
               <div className="py-6">
                 {user?.username ? (
