@@ -1,32 +1,13 @@
 import React from "react";
 
 interface Props {
-  top: string;
   children: React.ReactNode;
-  bottom: string;
 }
 
-const Card: React.FC<Props> = ({ children, bottom, top }) => {
+const Card: React.FC<Props> = ({ children }) => {
   return (
-    <div className="w-full lg:w-[32%] xl:w-[24%] rounded-lg text-center text-surface shadow-secondary-1 bg-white/80 text-black/75">
-      <div className="flex flex-col h-full">
-        {/* Top section */}
-        <div className="flex-grow border-b-2 border-neutral-100 px-6 py-3 flex items-center justify-center">
-          {top}
-        </div>
-
-        {/* Middle section */}
-        <div className="flex-grow p-6 flex items-center justify-center">
-          <h5 className="my-auto mb-2 text-xl font-medium leading-tight">
-            {children}
-          </h5>
-        </div>
-
-        {/* Bottom section */}
-        <div className="flex-grow border-t-2 border-neutral-100 px-6 py-3 flex items-center justify-center">
-          {bottom}
-        </div>
-      </div>
+    <div className="flex font-semibold border-b border-gray-300 border-dashed pb-4 lg:w-3/4">
+      <h5>{children}</h5>
     </div>
   );
 };

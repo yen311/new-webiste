@@ -19,65 +19,61 @@ function AboutPage() {
           </h1>
           <h4 className="pb-2">Fun Facts</h4>
         </div>
-        <div className="text-lg font-normal">
-          <FlexStack>
-            <Card top="I've been a software engineer 👨🏻‍💻 for" bottom="years">
-              <Counter
-                date={new Date("January 17, 2022 09:00:00")}
-                color={"darkblue"}
-              />
-            </Card>
-            <Card
-              top="Currently, I'm working at"
-              bottom="in Adelaide, South Australia"
+        <div className="space-y-4 > *">
+          <Card>
+            I've been a software engineer 👨🏻‍💻 for{" "}
+            <Counter
+              date={new Date("January 17, 2022 09:00:00")}
+              color={"darkblue"}
+            />{" "}
+            years
+          </Card>
+          <Card>
+            Currently, I'm working at{" "}
+            <a
+              className="text-orange-500"
+              href="https://jaix.com.au/"
+              target="blank"
             >
+              JAIX 🚚 - a logistics software company
+            </a>{" "}
+            in Adelaide, South Australia
+          </Card>
+          <Card>
+            My favorite city is Portland, Oregon 🌲. I studied and met my wife
+            there
+          </Card>
+          <Card>
+            We have a cat named August 🐱. She's a grey british shorthair
+          </Card>
+          <Card>
+            <div className="flex items-center">
+              My favorite framework is
               <a
-                className="text-orange-500"
-                href="https://jaix.com.au/"
+                href="https://react.dev/"
                 target="blank"
+                className="text-[#61DAFB] mx-2"
               >
-                JAIX 🚚 - a logistics software company
-              </a>{" "}
-            </Card>
-            <Card
-              top="My favorite city is"
-              bottom="I studied and met my wife there"
-            >
-              Portland, Oregon 🌲
-            </Card>
-            <Card
-              top="We have a cat named"
-              bottom="She's a grey british shorthair"
-            >
-              August 🐱
-            </Card>
-            <Card
-              top="My favorite framework is"
-              bottom="What I'm using to build this site"
-            >
-              <div className="flex items-center">
-                <a
-                  href="https://react.dev/"
-                  target="blank"
-                  className="text-[#61DAFB] mx-2"
-                >
-                  React
-                </a>
-                <SiReact color="#61DAFB" />
-              </div>
-            </Card>
-            <Card top="I was borned" bottom="years in Taiwan.">
-              <Counter
-                date={new Date("March 11, 1997 09:00:00")}
-                color={"IndianRed"}
-              />
-            </Card>
-            <Card top="I'm a" bottom="by heart">
-              <a href="https://www.16personalities.com/" target="blank">
-                ISTJ
+                React
               </a>
-            </Card>
-          </FlexStack>
+              <SiReact color="#61DAFB" />
+            </div>
+          </Card>
+          <Card>
+            I was borned{" "}
+            <Counter
+              date={new Date("March 11, 1997 09:00:00")}
+              color={"IndianRed"}
+            />{" "}
+            years ago in Taiwan.
+          </Card>
+          <Card>
+            I'm a{" "}
+            <a href="https://www.16personalities.com/" target="blank">
+              ISTJ
+            </a>{" "}
+            by heart
+          </Card>
         </div>
       </PageWrapper>
     </>
