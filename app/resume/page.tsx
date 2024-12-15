@@ -245,10 +245,10 @@ function ResumePage() {
                   <div key={index} className="mb-4 space-y-2 > * ml-4">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center text-indigo-900">
                       <h3 className="text-lg font-bold">{job.title}</h3>
-                      <p className="text-center">
+                      <p className="text-left lg:text-center">
                         {job.country}, {job.city}
                       </p>
-                      <p className="text-right">
+                      <p className="text-left lg:text-right">
                         {formatDate(job.startDate)} -{" "}
                         {job.isCurrent
                           ? "Present"
@@ -266,12 +266,12 @@ function ResumePage() {
                 <h2 className="text-xl font-bold mb-2">Education</h2>
                 {educations.map((education, index) => (
                   <div key={index} className="mb-4 space-y-2 > * ml-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center text-indigo-900">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 items-center text-indigo-900">
                       <h3 className="text-lg font-bold">{education.title}</h3>
-                      <p className="text-center">
+                      <p className="text-left lg:text-center">
                         {education.country}, {education.city}
                       </p>
-                      <p className="text-right">
+                      <p className="text-left lg:text-right">
                         {formatDate(education.startDate)} -{" "}
                         {education.isCurrent
                           ? "Present"
