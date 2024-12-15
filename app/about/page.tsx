@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Typewriter from "@/components/Typewriter";
 import { Counter } from "@/components/Counter";
 import Card from "@/components/Card";

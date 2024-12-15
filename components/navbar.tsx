@@ -1,17 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-} from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import {
   Bars3Icon,
   ChartPieIcon,
@@ -19,11 +9,7 @@ import {
   FingerPrintIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/react/20/solid";
+
 import logo from "@/public/logo.png";
 import { signOut, getCurrentUser, type AuthUser } from "aws-amplify/auth";
 import { useRouter } from "next/navigation";
@@ -48,10 +34,6 @@ const blogs = [
     icon: FingerPrintIcon,
   },
 ];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

@@ -1,92 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
+import { useQuery } from "@tanstack/react-query";
+import { API_URL } from "@/utils/config";
 import useScript from "../../components/hooks/useScript";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiBootstrap,
-  SiRedux,
-  SiFlutter,
-  SiDjango,
-  SiPostgresql,
-  SiCelery,
-  SiSelenium,
-  SiSwift,
-  SiKubernetes,
-  SiMicrosoftazure,
-  SiAmazonaws,
-  SiAzuredevops,
-  SiDocker,
-  SiTerraform,
-  SiDynamics365,
-} from "react-icons/si";
+import * as ReactIcon from "react-icons/si";
 import PageWrapper from "@/components/PageWrapper";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import IconRenderer from "@/components/IconRenderer";
+import ErrorMessage from "@/components/ErrorMessage";
 
-// import { getUrl } from 'aws-amplify/storage';
+interface ExperienceItemDetail {
+  id: number;
+  order: number;
+  description: string;
+  experienceItemId: number;
+}
 
-const workExperience = [
-  {
-    company: "JAIX Logistics Software",
-    location: "Adelaide, Australia",
-    date: "2024/09 - Present",
-    position: "Software Developer",
-    tasks: [
-      "Developed and implemented scalable Web APIs using ASP.NET Core",
-      "Developed driver application using .NET MAUI with MVVM pattern",
-      "Maintained warehouse smart scanning application using Xamarin Android",
-      "Modified and optimized the WinForms UI to alignment with business requirements.",
-      "Implemented logging with Serilog and Elasticsearch.",
-      "Collaborated in an Agile team.",
-      "Maintained and refactored legacy codebase ensuring alignment with current development standards",
-    ],
-  },
-  {
-    company: "Appcentric (jtwo solutions)",
-    location: "Adelaide, Australia",
-    date: "2022/01 - 2024/09",
-    position: "Software Developer",
-    tasks: [
-      "Developed and Maintained Cloud migration web app with Django and React.",
-      "Developed web application for SA Gov Agency with Django.",
-      "Set up a pipeline for containerise application and deploying to AKS.",
-      "Experienced and famliar with multiple cloud services.",
-      "Templating the resources deployment with ARM templates and terraform.",
-      "Integrate internal system synchronization with API.",
-      "Integrate with Celery to be able to run asynchronous background tasks / corn jobs.",
-      "Integrate Redis cache to improve querying performance with PostgreSQL.",
-      "Prototyped mobile app using React Native and bridged native Swift UI views.",
-    ],
-  },
-  {
-    company: "CBRLife Media",
-    location: "Canberra, Australia",
-    date: "2021/07 - 2021/10",
-    position: "Frontend Developer",
-    tasks: [
-      "Developing and maintained company main website by WordPress(https://www.cbrlife.com.au)",
-      "Rebuilding the current mobile application by react native",
-      "Ensured having user - friendly and responsive interface design",
-      "Built consistence and reusable code base following with proper documentation and format",
-      "Using Git to work collaboratively and waterfall method to follow project plan",
-    ],
-  },
-];
-
-const educations = [
-  {
-    school: "The Australian National University",
-    location: "Canberra, Australia",
-    date: "2020/02 - 2021/11",
-    degree: "Master of Computing",
-  },
-  {
-    school: "Portland State University",
-    location: "Portland, United States",
-    date: "2017/09 - 2019/06",
-    degree: "Bachelor of Business Administration: Finance",
-  },
-];
+interface Experience {
+  id: number;
+  title: string;
+  city: string;
+  country: string;
+  position: string;
+  startDate: string;
+  endDate: string | null;
+  isCurrent: boolean;
+  experienceItemType: string;
+  experienceItemDetails: ExperienceItemDetail[];
+}
 
 const skills = [
   {
@@ -94,27 +36,27 @@ const skills = [
     items: [
       {
         title: "React",
-        icon: SiReact,
+        icon: "SiReact",
         color: "#61DAFB",
       },
       {
         title: "Next.js",
-        icon: SiNextdotjs,
+        icon: "SiNextdotjs",
         color: "#000000",
       },
       {
         title: "Tailwind CSS",
-        icon: SiTailwindcss,
+        icon: "SiTailwindcss",
         color: "#06B6D4",
       },
       {
         title: "Bootstrap",
-        icon: SiBootstrap,
+        icon: "SiBootstrap",
         color: "#7952B3",
       },
       {
         title: "Redux",
-        icon: SiRedux,
+        icon: "SiRedux",
         color: "#764ABC",
       },
     ],
@@ -124,17 +66,17 @@ const skills = [
     items: [
       {
         title: "React Native",
-        icon: SiReact,
+        icon: "SiReact",
         color: "#61DAFB",
       },
       {
         title: "Flutter",
-        icon: SiFlutter,
+        icon: "SiFlutter",
         color: "#02569B",
       },
       {
         title: "Swift UI",
-        icon: SiSwift,
+        icon: "SiSwift",
         color: "#FA7343",
       },
     ],
@@ -144,22 +86,22 @@ const skills = [
     items: [
       {
         title: "Django",
-        icon: SiDjango,
+        icon: "SiDjango",
         color: "#092E20",
       },
       {
         title: "PostgreSQL",
-        icon: SiPostgresql,
+        icon: "SiPostgresql",
         color: "#336791",
       },
       {
         title: "Celery",
-        icon: SiCelery,
+        icon: "SiCelery",
         color: "#37814A",
       },
       {
         title: "Selenium",
-        icon: SiSelenium,
+        icon: "SiSelenium",
         color: "#43B02A",
       },
     ],
@@ -169,45 +111,108 @@ const skills = [
     items: [
       {
         title: "Kubernetes",
-        icon: SiKubernetes,
+        icon: "SiKubernetes",
         color: "#326CE5",
       },
       {
         title: "Microsoft Azure",
-        icon: SiMicrosoftazure,
+        icon: "SiMicrosoftazure",
         color: "#0078D4",
       },
       {
         title: "Amazon AWS",
-        icon: SiAmazonaws,
+        icon: "SiAmazonaws",
         color: "#232F3E",
       },
       {
         title: "Azure DevOps",
-        icon: SiAzuredevops,
+        icon: "SiAzuredevops",
         color: "#0078D7",
       },
       {
         title: "Docker",
-        icon: SiDocker,
+        icon: "SiDocker",
         color: "#2496ED",
       },
       {
         title: "Terraform",
-        icon: SiTerraform,
+        icon: "SiTerraform",
         color: "#623CE4",
       },
       {
         title: "Dynamics 365 - Business Central",
-        icon: SiDynamics365,
+        icon: "SiDynamics365",
         color: "#002050",
       },
     ],
   },
 ];
 
+// Format date string to "YYYY-MM"
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Add 1 since getMonth() is 0-indexed
+  return `${year}/${month}`;
+};
+
 function ResumePage() {
-  useScript(`https://cdn.credly.com/assets/utilities/embed.js`);
+  // The state to store the fetched data
+  const [workExperience, setWorkExperience] = useState<Experience[]>([]);
+  const [educations, setEducations] = useState<Experience[]>([]);
+
+  // Fetch the data by using react-query
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["experiences"],
+    queryFn: async () => {
+      const response = await fetch(`${API_URL}/api/experiences`);
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+
+      const workExperiences = data
+        .filter((item: Experience) => item.experienceItemType === "Work")
+        .map((item: Experience) => ({
+          ...item,
+          startDate: formatDate(item.startDate),
+          endDate: item.endDate ? formatDate(item.endDate) : null,
+        }))
+        .sort(
+          (fristItem: Experience, secondItem: Experience) =>
+            new Date(secondItem.startDate).getTime() -
+            new Date(fristItem.startDate).getTime(),
+        );
+
+      const educationExperiences = data
+        .filter((item: Experience) => item.experienceItemType === "Education")
+        .map((item: Experience) => ({
+          ...item,
+          startDate: formatDate(item.startDate),
+          endDate: item.endDate ? formatDate(item.endDate) : null,
+        }))
+        .sort(
+          (fristItem: Experience, secondItem: Experience) =>
+            new Date(secondItem.startDate).getTime() -
+            new Date(fristItem.startDate).getTime(),
+        );
+
+      setWorkExperience(workExperiences);
+      setEducations(educationExperiences);
+
+      return data;
+    },
+  });
+
+  // Fade in animation
+  const fadeInAnimation = useSpring({
+    opacity: isPending ? 0 : 1,
+    transform: isPending ? "translateY(20px)" : "translateY(0px)",
+    config: { duration: 500 },
+  });
+
+  useScript(`https://cdn.credly.com/assets/utilities/embed.js`, data);
 
   return (
     <>
@@ -217,74 +222,98 @@ function ResumePage() {
           <a
             target="_blank"
             href="https://yenwebsitebucket83ca8-dev.s3.ap-southeast-2.amazonaws.com/public/files/Resume.pdf"
-            className="bg-amber-500/70 text-white font-bold py-2 px-2 lg:px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105 "
+            className="bg-amber-500 text-white font-bold py-2 px-2 lg:px-4 rounded-full shadow-lg duration-500 hover:bg-primary hover:shadow-2xl hover:scale-105"
           >
-            Download Resume
+            Download
           </a>
         </div>
-
-        <h2 className="text-xl font-bold">Work Experience</h2>
-        {workExperience.map((job, index) => (
-          <div
-            key={index}
-            className="my-2 p-3 lg:p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
-          >
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
-              <h3 className="text-lg font-bold">{job.company}</h3>
-              <p>{job.location}</p>
-              <p>{job.date}</p>
-            </div>
-            <div className="font-bold">{job.position}</div>
-            <ul className="break-words">
-              {job.tasks.map((task, index) => (
-                <li key={index}>- {task}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        <h2 className="text-xl font-bold">Education</h2>
-        {educations.map((education, index) => (
-          <div
-            key={index}
-            className="my-2 p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
-          >
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
-              <h3 className="text-lg font-bold">{education.school}</h3>
-              <p>{education.location}</p>
-              <p>{education.date}</p>
-            </div>
-            <div className="font-bold">{education.degree}</div>
-          </div>
-        ))}
-        <h2 className="text-xl font-bold">Skills</h2>
-        {skills.map((skill, index) => (
-          <div
-            key={index}
-            className="my-2 p-2 lg:p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
-          >
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
-              <h3 className="text-lg font-bold">{skill.category}</h3>
-            </div>
-            <div className="flex flex-wrap">
-              {skill.items.map((item, index) => (
+        {(() => {
+          if (isPending) {
+            return (
+              <LoadingSpinner>
+                Good things take time... almost there! 🚀
+              </LoadingSpinner>
+            );
+          } else if (isError) {
+            const errorMessages = error?.message ?? "An error occurred";
+            return <ErrorMessage error={error} />;
+          } else {
+            return (
+              <animated.div style={fadeInAnimation}>
+                <h2 className="text-xl font-bold mb-2">Work Experience</h2>
+                {workExperience.map((job, index) => (
+                  <div key={index} className="mb-4 space-y-2 > * ml-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center text-indigo-900">
+                      <h3 className="text-lg font-bold">{job.title}</h3>
+                      <p className="text-center">
+                        {job.country}, {job.city}
+                      </p>
+                      <p className="text-right">
+                        {formatDate(job.startDate)} -{" "}
+                        {job.isCurrent
+                          ? "Present"
+                          : formatDate(job.endDate ?? "")}
+                      </p>
+                    </div>
+                    <div className="font-bold">{job.position}</div>
+                    <ul className="break-words">
+                      {job.experienceItemDetails.map((detail, index) => (
+                        <li key={index}>- {detail.description}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <h2 className="text-xl font-bold mb-2">Education</h2>
+                {educations.map((education, index) => (
+                  <div key={index} className="mb-4 space-y-2 > * ml-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center text-indigo-900">
+                      <h3 className="text-lg font-bold">{education.title}</h3>
+                      <p className="text-center">
+                        {education.country}, {education.city}
+                      </p>
+                      <p className="text-right">
+                        {formatDate(education.startDate)} -{" "}
+                        {education.isCurrent
+                          ? "Present"
+                          : formatDate(education.endDate ?? "")}
+                      </p>
+                    </div>
+                    <div className="font-bold">{education.position}</div>
+                  </div>
+                ))}
+                <h2 className="text-xl font-bold">Skills</h2>
+                {skills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="my-2 p-2 lg:p-6 bg-white/50 rounded-lg shadow-lg space-y-4 > *"
+                  >
+                    <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
+                      <h3 className="text-lg font-bold">{skill.category}</h3>
+                    </div>
+                    <div className="flex flex-wrap">
+                      {skill.items.map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center space-x-1 mx-2 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 mb-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
+                        >
+                          <IconRenderer icon={item.icon} color={item.color} />
+                          <span>{item.title}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <h2 className="text-xl font-bold">Certificate</h2>
                 <div
-                  key={index}
-                  className="flex items-center space-x-1 mx-2 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 mb-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
-                >
-                  <item.icon color={item.color} />
-                  <span>{item.title}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-        <h2 className="text-xl font-bold">Certificate</h2>
-        <div
-          data-iframe-width="300"
-          data-iframe-height="300"
-          data-share-badge-id="948aa351-269b-46d7-a63e-66c3e33f3ee9"
-          data-share-badge-host="https://www.credly.com"
-        />
+                  data-iframe-width="300"
+                  data-iframe-height="300"
+                  data-share-badge-id="948aa351-269b-46d7-a63e-66c3e33f3ee9"
+                  data-share-badge-host="https://www.credly.com"
+                />
+              </animated.div>
+            );
+          }
+        })()}
       </PageWrapper>
     </>
   );
