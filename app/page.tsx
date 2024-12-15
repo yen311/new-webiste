@@ -1,6 +1,10 @@
 "use client";
 import PageWrapper from "@/components/PageWrapper";
-import { SiAwsamplify, SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import { SiDotnet, SiTailwindcss, SiNextdotjs } from "react-icons/si";
+
+import { BiLogoPostgresql } from "react-icons/bi";
+import { FaAws } from "react-icons/fa";
+
 import { useSprings, animated } from "@react-spring/web";
 
 const icons = [
@@ -15,8 +19,18 @@ const icons = [
     color: "text-[#06B6D4]",
   },
   {
-    Icon: SiAwsamplify,
-    href: "https://docs.amplify.aws/nextjs/",
+    Icon: SiDotnet,
+    href: "https://dotnet.microsoft.com/en-us/apps/aspnet/apis/",
+    color: "text-[#512bd4]",
+  },
+  {
+    Icon: BiLogoPostgresql,
+    href: "https://www.postgresql.org/",
+    color: "text-[#336791]",
+  },
+  {
+    Icon: FaAws,
+    href: "https://aws.amazon.com/?nc2=h_lg",
     color: "text-[#FF9900]",
   },
 ];
@@ -35,8 +49,9 @@ export default function Home() {
       <div className="space-y-4 > *">
         <h2 className="text-2xl font-bold">Welcome 歡迎</h2>
         <div className=" font-semibold border-b border-gray-300 border-dotted pb-4 lg:w-1/2">
-          A simple, clean, responsive morden website built by Next.js with
-          Tailwind CSS, and hosting on AWS amplify.
+          A simple, clean, responsive modern website built with Next.js and
+          Tailwind CSS, connected to my custom .NET Core Web API and a
+          self-managed PostgreSQL database on EC2.
           <br />
           <div className="flex mt-4 space-x-4 > *">
             {springs.map((props, index) => {

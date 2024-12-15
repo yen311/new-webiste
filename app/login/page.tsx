@@ -64,7 +64,7 @@ function LoginPage() {
         <h2 className="text-2xl font-bold mb-5 text-center text-white">
           Sign In
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-4 text-primary">
           <div>
             <label
               htmlFor="username"

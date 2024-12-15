@@ -6,6 +6,7 @@ import { generateClient } from "aws-amplify/api";
 import { useRouter } from "next/navigation";
 import PageWrapper from "@/components/PageWrapper";
 import { Divider } from "@aws-amplify/ui-react";
+import DevelopmentMessage from "@/components/DevelopmentMessage";
 
 const client = generateClient();
 
@@ -40,10 +41,11 @@ function BlogsPage() {
   return (
     <>
       <PageWrapper disappearOnMobile={true} noPadding={true}>
-        <h2 className="text-2xl font-bold pb-4 mb-4 border-b border-gray-300 border-dotted">
+        <h2 className="text-2xl font-bold py-4 mb-4 border-b border-gray-300 border-dotted">
           Blogs List
         </h2>
-        {blogs.map((blog: Blog, index: Number) => {
+        <DevelopmentMessage />
+        {/* {blogs.map((blog: Blog, index: Number) => {
           if (index == blogs.length - 1) {
             return (
               <a href={`/blogs/${blog.id}`}>
@@ -57,7 +59,7 @@ function BlogsPage() {
               <Divider />
             </a>
           );
-        })}
+        })} */}
       </PageWrapper>
     </>
   );

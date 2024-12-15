@@ -4,7 +4,6 @@ import { useSpring, animated } from "@react-spring/web";
 import { useQuery } from "@tanstack/react-query";
 import { API_URL } from "@/utils/config";
 import useScript from "../../components/hooks/useScript";
-import * as ReactIcon from "react-icons/si";
 import PageWrapper from "@/components/PageWrapper";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import IconRenderer from "@/components/IconRenderer";
@@ -65,6 +64,17 @@ const skills = [
     category: "Frontend - MOBILE",
     items: [
       {
+        title: ".NET MAUI",
+        icon: "SiDotnet",
+        color: "#1e40af",
+      },
+      {
+        title: "Xamarin.Android",
+        icon: "SiAndroid",
+        color: "#A4C639",
+      },
+
+      {
         title: "React Native",
         icon: "SiReact",
         color: "#61DAFB",
@@ -85,6 +95,11 @@ const skills = [
     category: "Backend",
     items: [
       {
+        title: ".NET Web API",
+        icon: "SiDotnet",
+        color: "#1e40af",
+      },
+      {
         title: "Django",
         icon: "SiDjango",
         color: "#092E20",
@@ -93,6 +108,11 @@ const skills = [
         title: "PostgreSQL",
         icon: "SiPostgresql",
         color: "#336791",
+      },
+      {
+        title: "MSSQL",
+        icon: "DiMsqlServer",
+        color: "#B71C1C",
       },
       {
         title: "Celery",
@@ -125,14 +145,24 @@ const skills = [
         color: "#232F3E",
       },
       {
-        title: "Azure DevOps",
-        icon: "SiAzuredevops",
-        color: "#0078D7",
-      },
-      {
         title: "Docker",
         icon: "SiDocker",
         color: "#2496ED",
+      },
+      {
+        title: "Git",
+        icon: "SiGit",
+        color: "#F14E32",
+      },
+      {
+        title: "Jira",
+        icon: "SiJira",
+        color: "#0052CC",
+      },
+      {
+        title: "Azure DevOps",
+        icon: "SiAzuredevops",
+        color: "#0078D7",
       },
       {
         title: "Terraform",
@@ -216,7 +246,7 @@ function ResumePage() {
 
   return (
     <>
-      <PageWrapper disappearOnMobile={true}>
+      <PageWrapper disappearOnMobile={true} noPadding={true}>
         <div className="flex items-center justify-between py-4 mb-4 border-b border-gray-300 border-dotted">
           <h1 className="text-3xl font-bold">Resume</h1>
           <a
@@ -243,7 +273,7 @@ function ResumePage() {
                 <h2 className="text-xl font-bold mb-2">Work Experience</h2>
                 {workExperience.map((job, index) => (
                   <div key={index} className="mb-4 space-y-2 > * ml-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center text-indigo-900">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 items-center text-indigo-300 lg:text-indigo-900">
                       <h3 className="text-lg font-bold">{job.title}</h3>
                       <p className="text-left lg:text-center">
                         {job.country}, {job.city}

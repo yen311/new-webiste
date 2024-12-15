@@ -1,10 +1,15 @@
 import * as SiIcons from "react-icons/si";
+import * as DiIcons from "react-icons/di";
 
 const IconRenderer = ({ icon, color }) => {
   // Access the icon dynamically using bracket notation
-  const IconComponent = SiIcons[icon];
+  let IconComponent = SiIcons[icon];
 
-  return <IconComponent color={color} />;
+  if (!IconComponent) {
+    IconComponent = DiIcons[icon];
+  }
+
+  return IconComponent && <IconComponent color={color} />;
 };
 
 export default IconRenderer;

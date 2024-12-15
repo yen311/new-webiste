@@ -57,8 +57,8 @@ function AboutPage() {
 
   return (
     <>
-      <PageWrapper disappearOnMobile={true}>
-        <div className="flex flex-col items-start justify-between border-b border-gray-300 border-dotted mb-4">
+      <PageWrapper disappearOnMobile={true} noPadding={true}>
+        <div className="flex flex-col items-start justify-between border-b border-gray-300 border-dotted my-4">
           <h1 className="text-3xl font-bold">
             <Typewriter
               texts={["README.MD", "<p>ABOUT ME</p>", "HELLO STRANGER👋!"]}
@@ -66,7 +66,7 @@ function AboutPage() {
           </h1>
           <h4 className="pb-2">Fun Facts</h4>
         </div>
-        <div className="space-y-4 > *">
+        <div className="space-y-4 > * mb-2">
           {springs.map((props, index) => (
             <animated.div style={props} key={index}>
               <Card>{listItems[index]}</Card>
