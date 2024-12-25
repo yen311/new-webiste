@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useQuery } from "@tanstack/react-query";
 import { API_URL } from "@/utils/config";

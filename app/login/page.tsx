@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { signIn, type SignInInput, confirmSignIn } from "aws-amplify/auth";
+import { signIn, type SignInInput } from "aws-amplify/auth";
 import { useRouter } from "next/navigation";
 
 import { Toast } from "@/components/toast";

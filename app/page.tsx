@@ -1,10 +1,8 @@
 "use client";
 import PageWrapper from "@/components/PageWrapper";
 import { SiDotnet, SiTailwindcss, SiNextdotjs } from "react-icons/si";
-
 import { BiLogoPostgresql } from "react-icons/bi";
 import { FaAws } from "react-icons/fa";
-
 import { useSprings, animated } from "@react-spring/web";
 
 const icons = [
