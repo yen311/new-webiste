@@ -180,7 +180,10 @@ const skills = [
 
 // Format date string to "YYYY-MM"
 const formatDate = (dateString: string): string => {
-  const date = new Date(dateString);
+  // Ensure the date is in ISO format (YYYY-MM-DD)
+  const isoFormattedDate = dateString.replace(/\//g, "-"); // Replaces any slashes with dashes
+  const date = new Date(isoFormattedDate);
+
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0"); // Add 1 since getMonth() is 0-indexed
   return `${year}/${month}`;
@@ -296,7 +299,7 @@ function ResumePage() {
                 <h2 className="text-xl font-bold mb-2">Education</h2>
                 {educations.map((education, index) => (
                   <div key={index} className="mb-4 space-y-2 > * ml-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 items-center text-indigo-900">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 items-center text-indigo-300 lg:text-indigo-900">
                       <h3 className="text-lg font-bold">{education.title}</h3>
                       <p className="text-left lg:text-center">
                         {education.country}, {education.city}
